@@ -2,3 +2,35 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.user-section,
+.computer-section {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.user-selection,
+.computer-selection {
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin-right: 2em;
+}
