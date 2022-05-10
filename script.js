@@ -1,18 +1,20 @@
 const userSection = document.querySelector(".user-section")
+const userScoreDisplay = document.getElementById("user-score")
+const computerScoreDisplay = document.getElementById("computer-score")
 
 userSection.addEventListener("click", function handleClick(e){
-    if (e.target.id == "user-rock" || e.target.id == "user-paper" || e.target.id == "user-scissors") {
-        let rock = document.getElementById("user-rock")
-        let paper = document.getElementById("user-paper")
-        let scissors = document.getElementById("user-scissors")
+    if (e.target.id == "rock" || e.target.id == "paper" || e.target.id == "scissors") {
+        let rock = document.getElementById("rock")
+        let paper = document.getElementById("paper")
+        let scissors = document.getElementById("scissors")
         let userSelection = document.getElementById(e.target.id)
-        rock.style.backgroundColor = "#fff"
+        rock.style.backgroundColor = "#eee"
         rock.style.transform = "scale(0.9)"
-        paper.style.backgroundColor = "#fff"
+        paper.style.backgroundColor = "#eee"
         paper.style.transform = "scale(0.9)"
-        scissors.style.backgroundColor = "#fff"
+        scissors.style.backgroundColor = "#eee"
         scissors.style.transform = "scale(0.9)"
-        userSelection.style.backgroundColor = "red"
+        userSelection.style.backgroundColor = "#49be25"
         userSelection.style.transform = "scale(1.1)"
         let gameInfo = playRound(computerPlay, userSelection)
         if (gameInfo.userScore === 5 || gameInfo.computerScore === 5) {
@@ -30,13 +32,15 @@ let gameInfo = {}
 
 function playRound(computerPlay, userPlay) {
     let computerSelection = computerPlay()
-    let userSelection = userPlay.innerText.toLowerCase()
+    let userSelection = userPlay.id.toLowerCase()
     winner = determineWinner(computerSelection, userSelection)
     round ++
     if (winner === "user") {
         userScore ++
+        userScoreDisplay.textContent = userScore
     } else if (winner === "computer") {
         computerScore ++
+        computerScoreDisplay.textContent = computerScore
     }
     let roundInfo = {
        winner,
@@ -62,13 +66,13 @@ function computerPlay() {
     let paper = document.getElementById("pc-paper")
     let scissors = document.getElementById("pc-scissors")
     const pcSelection = document.getElementById(`pc-${computerSelection}`)
-    rock.style.backgroundColor = "#fff"
+    rock.style.backgroundColor = "#eee"
     rock.style.transform = "scale(0.9)"
-    paper.style.backgroundColor = "#fff"
+    paper.style.backgroundColor = "#eee"
     paper.style.transform = "scale(0.9)"
-    scissors.style.backgroundColor = "#fff"
+    scissors.style.backgroundColor = "#eee"
     scissors.style.transform = "scale(0.9)"
-    pcSelection.style.backgroundColor = "red"
+    pcSelection.style.backgroundColor = "#49be25"
     pcSelection.style.transform = "scale(1.1)"
     return computerSelection.toLowerCase()
 }
@@ -86,12 +90,9 @@ function determineWinner(computerSelection, userSelection) {
 }
 
 function finishGame(gameInfo) {
-    console.log(gameInfo)
-    console.log(`User Score: ${gameInfo.userScore}`)
-    console.log(`Computer Score: ${gameInfo.computerScore}`)
     if (gameInfo.userScore > gameInfo.computerScore) {
-        console.log("You win!")
+        console.log("1")
     } else {
-        console.log("Computer wins!")
+        console.log("2")
     }
 }

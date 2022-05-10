@@ -1,6 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
@@ -9,11 +10,21 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f8f0e3;
+    background-color: #2596be;
 }
 
 h1 {
     text-align: center;
+    color: #eee;
+    border-bottom: 1px solid #eee;
+}
+
+h2 {
+    color: #eee;
+}
+
+h2 span {
+    color: #333;
 }
 
 .user-section,
@@ -29,6 +40,7 @@ h1 {
 .user-selection,
 .computer-selection {
     border: 1px solid #333;
+    background-color: #eee;
     border-radius: inherit;
     display: flex;
     justify-content: center;
@@ -42,4 +54,9 @@ h1 {
 .user-selection:last-child,
 .computer-selection:last-child {
     margin-right: 0;
+}
+
+.user-selection i,
+.computer-selection i {
+    transform: scale(3);
 }
