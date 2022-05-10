@@ -7,9 +7,13 @@ userSection.addEventListener("click", function handleClick(e){
         let scissors = document.getElementById("user-scissors")
         let userSelection = document.getElementById(e.target.id)
         rock.style.backgroundColor = "#fff"
+        rock.style.transform = "scale(0.9)"
         paper.style.backgroundColor = "#fff"
+        paper.style.transform = "scale(0.9)"
         scissors.style.backgroundColor = "#fff"
-        userSelection.style.backgroundColor = "#aaa"
+        scissors.style.transform = "scale(0.9)"
+        userSelection.style.backgroundColor = "red"
+        userSelection.style.transform = "scale(1.1)"
         let gameInfo = playRound(computerPlay, userSelection)
         if (gameInfo.userScore === 5 || gameInfo.computerScore === 5) {
             finishGame(gameInfo)
@@ -59,9 +63,13 @@ function computerPlay() {
     let scissors = document.getElementById("pc-scissors")
     const pcSelection = document.getElementById(`pc-${computerSelection}`)
     rock.style.backgroundColor = "#fff"
+    rock.style.transform = "scale(0.9)"
     paper.style.backgroundColor = "#fff"
+    paper.style.transform = "scale(0.9)"
     scissors.style.backgroundColor = "#fff"
-    pcSelection.style.backgroundColor = "#aaa"
+    scissors.style.transform = "scale(0.9)"
+    pcSelection.style.backgroundColor = "red"
+    pcSelection.style.transform = "scale(1.1)"
     return computerSelection.toLowerCase()
 }
 

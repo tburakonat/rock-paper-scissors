@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #f8f0e3;
 }
 
 h1 {
@@ -17,20 +18,28 @@ h1 {
 
 .user-section,
 .computer-section {
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 2em;
+    border-radius: 2em;
+    padding: 2em;
 }
 
 .user-selection,
 .computer-selection {
-    border: 1px solid blue;
+    border: 1px solid #333;
+    border-radius: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 200px;
     height: 200px;
     margin-right: 2em;
+    transition: transform ease-in 250ms;
+}
+
+.user-selection:last-child,
+.computer-selection:last-child {
+    margin-right: 0;
 }
