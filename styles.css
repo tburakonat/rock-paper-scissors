@@ -19,6 +19,11 @@ h1 {
     border-bottom: 1px solid #eee;
 }
 
+#description {
+    color: #eee;
+    margin-top: 1em;
+}
+
 h2 {
     color: #eee;
 }

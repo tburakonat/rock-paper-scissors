@@ -91,8 +91,10 @@ function determineWinner(computerSelection, userSelection) {
 
 function finishGame(gameInfo) {
     if (gameInfo.userScore > gameInfo.computerScore) {
-        console.log("1")
+        userScoreDisplay.style.color = "#49be25"
+        computerScoreDisplay.style.color = "#d62828"
     } else {
-        console.log("2")
+        computerScoreDisplay.style.color = "#49be25"
+        userScoreDisplay.style.color = "#d62828"
     }
 }
