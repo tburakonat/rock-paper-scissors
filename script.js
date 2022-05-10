@@ -2,17 +2,46 @@ const userSection = document.querySelector(".user-section")
 
 userSection.addEventListener("click", function handleClick(e){
     if (e.target.id == "user-rock" || e.target.id == "user-paper" || e.target.id == "user-scissors") {
-        userSection.removeEventListener("click", handleClick)
+        let rock = document.getElementById("user-rock")
+        let paper = document.getElementById("user-paper")
+        let scissors = document.getElementById("user-scissors")
         let userSelection = document.getElementById(e.target.id)
+        rock.style.backgroundColor = "#fff"
+        paper.style.backgroundColor = "#fff"
+        scissors.style.backgroundColor = "#fff"
         userSelection.style.backgroundColor = "#aaa"
-        playRound(computerPlay, userSelection)
+        let gameInfo = playRound(computerPlay, userSelection)
+        if (gameInfo.userScore === 5 || gameInfo.computerScore === 5) {
+            finishGame(gameInfo)
+            userSection.removeEventListener("click", handleClick)
+        }
     }
 })
+
+let winner = ""
+let userScore = 0
+let computerScore = 0
+let round = 0
+let gameInfo = {}
 
 function playRound(computerPlay, userPlay) {
     let computerSelection = computerPlay()
     let userSelection = userPlay.innerText.toLowerCase()
-    determineWinner(computerSelection, userSelection)
+    winner = determineWinner(computerSelection, userSelection)
+    round ++
+    if (winner === "user") {
+        userScore ++
+    } else if (winner === "computer") {
+        computerScore ++
+    }
+    let roundInfo = {
+       winner,
+       userScore,
+       computerScore,
+       round
+    }
+    gameInfo = roundInfo
+    return gameInfo
 }
 
 function computerPlay() {
@@ -25,17 +54,36 @@ function computerPlay() {
     } else {
         computerSelection = "scissors"
     }
+    let rock = document.getElementById("pc-rock")
+    let paper = document.getElementById("pc-paper")
+    let scissors = document.getElementById("pc-scissors")
     const pcSelection = document.getElementById(`pc-${computerSelection}`)
+    rock.style.backgroundColor = "#fff"
+    paper.style.backgroundColor = "#fff"
+    scissors.style.backgroundColor = "#fff"
     pcSelection.style.backgroundColor = "#aaa"
     return computerSelection.toLowerCase()
 }
 
 function determineWinner(computerSelection, userSelection) {
     if (computerSelection === userSelection) {
-        console.log("Draw")
-    } else if (computerSelection === "paper" && userSelection === "rock" || computerSelection === "rock" && userSelection === "scissors") {
-        console.log("PC Wins")
+        return "draw"
+    } else if (computerSelection === "paper" && userSelection === "rock" || 
+                computerSelection === "rock" && userSelection === "scissors" || 
+                    computerSelection === "scissors" && userSelection === "paper") {
+        return "computer"
     } else {
-        console.log("User Wins")
+        return "user"
+    }
+}
+
+function finishGame(gameInfo) {
+    console.log(gameInfo)
+    console.log(`User Score: ${gameInfo.userScore}`)
+    console.log(`Computer Score: ${gameInfo.computerScore}`)
+    if (gameInfo.userScore > gameInfo.computerScore) {
+        console.log("You win!")
+    } else {
+        console.log("Computer wins!")
     }
 }
